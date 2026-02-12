@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mojomeet - Custom Fit Clothing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Top Navigation -->
+        <header class="header">
+            <div class="header-left">
+                      <div class="logo">
+          <div class="logo-mark">
+            <div class="logo-rect r1" aria-hidden="true"></div>
+            <div class="logo-rect r2" aria-hidden="true"></div>
+            <div class="logo-rect r3" aria-hidden="true"></div>
+            <div class="logo-rect r4" aria-hidden="true"></div>
+          </div>
+        </div>
+
+                <nav class="nav">
+                    <a href="#">CASUAL</a>
+                    <a href="#">STREET</a>
+                    <a href="#">MARRIAGE</a>
+                    <a href="#">LUXURIES</a>
+                    <a href="#">NIGHT WEAR</a>
+                    <a href="#">DESIGNER</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <button class="header-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="header-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </button>
+                <button class="header-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Left Panel - Mannequin -->
+            <div class="mannequin-panel">
+                <!-- Toggle Switch -->
+                <div class="toggle-switch">
+                    <div class="toggle-slider"></div>
+                    <span class="toggle-f">F</span>
+                </div>
+
+                <!-- Stars
+                <div class="stars">
+                    <svg width="40" height="70" viewBox="0 0 40 70">
+                        <polygon points="20,5 22,15 12,15 20,20 15,30 20,25 25,30 20,20 28,15 18,15" fill="#F59E0B"/>
+                        <line x1="20" y1="20" x2="20" y2="70" stroke="#F59E0B" stroke-width="2"/>
+                    </svg>
+                    <svg width="40" height="70" viewBox="0 0 40 70">
+                        <polygon points="20,5 22,15 12,15 20,20 15,30 20,25 25,30 20,20 28,15 18,15" fill="#F59E0B"/>
+                        <line x1="20" y1="20" x2="20" y2="50" stroke="#F59E0B" stroke-width="2"/>
+                    </svg>
+                    <svg width="40" height="70" viewBox="0 0 40 70">
+                        <polygon points="20,5 22,15 12,15 20,20 15,30 20,25 25,30 20,20 28,15 18,15" fill="#F59E0B"/>
+                        <line x1="20" y1="20" x2="20" y2="70" stroke="#F59E0B" stroke-width="2"/>
+                    </svg>
+                </div> -->
+
+                <!-- Logo -->
+                <img src="assests/modomeet.png" alt="MOJOMEET" class="brand-logo">
+
+                <!-- Upper/Lower Buttons -->
+                <div class="mode-buttons">
+                    <button class="mode-btn active">
+                        <div class="icon-circle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <!-- T-shirt -->
+                                <path d="M16 5l4 3v3h-3V9l-1 1H8L7 9v2H4V8l4-3"></path>
+                                <path d="M8 7h8v13H8z"></path>
+                            </svg>
+                        </div>
+                        <span>Upper</span>
+                    </button>
+                    <button class="mode-btn">
+                        <div class="icon-circle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <!-- Pants icon -->
+                                <path d="M6 3h12v8l-2 10h-3l-1-8-1 8H8l-2-10V3z"></path>
+                            </svg>
+                        </div>
+                        <span>Lower</span>
+                    </button>
+                </div>
+
+                <!-- Mannequin -->
+                <div class="mannequin">
+                    <img src="assests/body.png" alt="Body" class="body-image">
+                    
+                    <!-- Measurement Points -->
+                    <div class="point" style="top: 39%; left: 42%;"></div>
+                    <div class="point" style="top: 46%; left: 70%;"></div>
+                    <div class="point" style="top: 52%; left: 41%;"></div>
+                    <div class="point" style="top: 52%; left: 97%;"></div>
+                    <div class="point" style="top: 85%; left: 19%;"></div>
+                    <div class="point" style="top: 83%; left: 75%;"></div>
+                    <div class="point" style="top: 85%; left: 87%;"></div>
+                </div>
+
+                <!-- Dimension Badge -->
+                <!-- <div class="dimension">757 × 834</div> -->
+            </div>
+
+            <!-- Right Panel - Form -->
+            <div class="form-panel">
+                <div class="form-header">
+                    <h2>Your Custom Fit</h2>
+                    <a href="#" class="library-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Fit Library
+                    </a>
+                </div>
+
+                <form>
+                    <!-- Profile Name -->
+                    <div class="field-full">
+                        <input type="text" placeholder="Profile Name">
+                    </div>
+
+                    <!-- Age & Gender -->
+                    <div class="field-row">
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Age">
+                                <span class="unit">Years</span>
+                            </div>
+                        </div>
+                        <div class="gender-group">
+                            <div class="gender-option">
+                                <button type="button" class="gender-btn active">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <circle cx="10" cy="10" r="7"></circle>
+                                        <line x1="21" y1="3" x2="14" y2="10"></line>
+                                        <polyline points="21 3 21 8 16 8"></polyline>
+                                    </svg>
+                                </button>
+                                <span class="gender-label1">Male</span>
+                            </div>
+
+                            <div class="gender-option">
+                                <button type="button" class="gender-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <circle cx="12" cy="8" r="7"></circle>
+                                        <line x1="12" y1="15" x2="12" y2="22"></line>
+                                        <line x1="8" y1="19" x2="16" y2="19"></line>
+                                    </svg>
+                                </button>
+                                <span class="gender-label">Female</span>
+                            </div>
+
+                            <div class="gender-option">
+                                <button type="button" class="gender-btn">
+                                    <span style="font-size: 11px; font-weight: 600;">O+</span>
+                                </button>
+                                <span class="gender-label">Others</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Neck/Collar & Chest -->
+                    <div class="field-row">
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Neck/Collar">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Chest">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shoulder Width & Bicep -->
+                    <div class="field-row">
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Shoulder Width">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Bicep">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Armhole & Wrist Around -->
+                    <div class="field-row">
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Armhole">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Wrist Around">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sleeve Length & Front Lenght -->
+                    <div class="field-row">
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Sleeve Length">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                        <div class="field-half">
+                            <div class="field-with-unit">
+                                <input type="text" placeholder="Front Lenght">
+                                <span class="unit">Inch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back Length -->
+                    <div class="field-full">
+                        <div class="field-with-unit">
+                            <input type="text" placeholder="Back Length">
+                            <span class="unit1">Inch</span>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <button type="submit" class="save-btn">
+                        Save
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
