@@ -57,9 +57,10 @@
             <!-- Left Panel - Mannequin -->
             <div class="mannequin-panel">
                 <!-- Toggle Switch -->
-                <div class="toggle-switch">
-                    <div class="toggle-slider"></div>
-                    <span class="toggle-f">F</span>
+                <div class="toggle-switch" role="button" aria-pressed="false" tabindex="0">
+                    <div class="toggle-slider">
+                        <span class="toggle-f">F</span>
+                    </div>
                 </div>
 
                 <!-- Stars
@@ -109,13 +110,31 @@
                     <img src="assests/body.png" alt="Body" class="body-image">
                     
                     <!-- Measurement Points -->
-                    <div class="point" style="top: 39%; left: 42%;"></div>
-                    <div class="point" style="top: 46%; left: 70%;"></div>
-                    <div class="point" style="top: 52%; left: 41%;"></div>
-                    <div class="point" style="top: 52%; left: 97%;"></div>
-                    <div class="point" style="top: 85%; left: 19%;"></div>
-                    <div class="point" style="top: 83%; left: 75%;"></div>
-                    <div class="point" style="top: 85%; left: 87%;"></div>
+                    <div class="point" data-side="front" data-image="assests/neck.png" style="top: 39%; left: 42%;"></div>
+                    <div class="point" data-side="front" data-image="assests/uppershoulder.png" style="top: 46%; left: 70%;"></div>
+                    <div class="point" data-side="front" data-image="assests/chest.png" style="top: 52%; left: 41%;"></div>
+                    <div class="point" data-side="front" data-image="assests/shoulder.png" style="top: 52%; left: 97%;"></div>
+                    <div class="point" data-side="front" data-image="assests/waiste.png" style="top: 85%; left: 19%;"></div>
+                    <div class="point" data-side="front" data-image="assests/wrist.png" style="top: 83%; left: 75%;"></div>
+                    <div class="point" data-side="front" data-image="assests/armlengeth.png" style="top: 85%; left: 87%;"></div>
+
+                    <!-- Back-side measurement points (hidden by default) -->
+                    <div class="point" data-side="back" data-image="assests/backshoulder.png" style="top: 45%; left: 58%;"></div>
+                    <div class="point" data-side="back" data-image="assests/back.png" style="top: 98%; left: 59%;"></div>
+                    <!-- <div class="point" data-side="back" data-image="assests/backbody.png" style="top: 20%; left: 60%;"></div>
+                    <div class="point" data-side="back" data-image="assests/back.png" style="top: 68%; left: 78%;"></div>
+                    <div class="point" data-side="back" data-image="assests/lower.png" style="top: 83%; left: 34%;"></div> -->
+                    <!-- Lower-specific measurement points (shown only in Lower mode) -->
+                    <div class="point" data-side="lower" data-image="assests/lower.png" style="top: 9%; left: 17%;"></div>
+                    <div class="point" data-side="lower" data-image="assests/lower.png" style="top: 28%; left: 25%;"></div>
+                    <div class="point" data-side="lower" data-image="assests/lower.png" style="top: 20%; left: 60%;"></div>
+                    <div class="point" data-side="lower" data-image="assests/lower.png" style="top: 68%; left: 78%;"></div>
+                    <div class="point" data-side="lower" data-image="assests/lower.png" style="top: 83%; left: 34%;"></div>
+                    <!-- <div class="point" data-side="back" data-image="assests/waiste.png" style="top: 78%; left: 28%;"></div> -->
+                    <!-- <div class="point" data-side="back" data-image="assests/backshoulder.png" style="top: 46%; left: 65%;"></div> -->
+
+                    <!-- shared tooltip image shown on hover; src is set from each point's data-image -->
+                    <!-- <img id="point-tooltip" class="point-tooltip" src="" alt="point preview"> -->
                 </div>
 
                 <!-- Dimension Badge -->
@@ -262,6 +281,100 @@
                 </form>
             </div>
         </div>
-    </div>
-</body>
+        </div>
+
+            <script>
+                (function(){
+                    const points = document.querySelectorAll('.point');
+                    const tooltip = document.getElementById('point-tooltip');
+                    const mannequin = document.querySelector('.mannequin');
+                    const brandLogo = document.querySelector('.brand-logo');
+
+                    if(!points.length || !brandLogo) return;
+
+                    const originalLogoSrc = brandLogo.src;
+                    let pinnedPoint = null;
+
+                    function setPosition(el){
+                        if(!mannequin || !tooltip) return;
+                        const pRect = el.getBoundingClientRect();
+                        const mRect = mannequin.getBoundingClientRect();
+                        const left = pRect.left - mRect.left + (pRect.width/2);
+                        const top = pRect.top - mRect.top; // tooltip will sit above
+                        tooltip.style.left = left + 'px';
+                        tooltip.style.top = top + 'px';
+                    }
+
+                    points.forEach(p => {
+                        p.addEventListener('mouseenter', () => {
+                            if(pinnedPoint) return;
+                            const src = p.dataset.image;
+                            if(!src) return;
+                            brandLogo.src = src;
+                            if(tooltip){
+                                tooltip.src = src;
+                                tooltip.classList.add('show');
+                                setPosition(p);
+                            }
+                        });
+
+                        p.addEventListener('mousemove', () => {
+                            if(pinnedPoint) return;
+                            setPosition(p);
+                        });
+
+                        p.addEventListener('mouseleave', () => {
+                            if(pinnedPoint) return;
+                            brandLogo.src = originalLogoSrc;
+                            if(tooltip){
+                                tooltip.classList.remove('show');
+                                setTimeout(() => tooltip.src = '', 150);
+                            }
+                        });
+
+                        p.addEventListener('click', (ev) => {
+                            ev.stopPropagation();
+                            const src = p.dataset.image;
+                            if(!src) return;
+                            // toggle pinned state
+                            if(pinnedPoint === p){
+                                pinnedPoint = null;
+                                p.classList.remove('pinned');
+                                brandLogo.src = originalLogoSrc;
+                                if(tooltip){
+                                    tooltip.classList.remove('show');
+                                    setTimeout(() => tooltip.src = '', 150);
+                                }
+                            } else {
+                                if(pinnedPoint) pinnedPoint.classList.remove('pinned');
+                                pinnedPoint = p;
+                                p.classList.add('pinned');
+                                brandLogo.src = src;
+                                if(tooltip){
+                                    tooltip.src = src;
+                                    tooltip.classList.add('show');
+                                    setPosition(p);
+                                }
+                            }
+                        });
+                    });
+
+                    // clicking outside unpins
+                    document.addEventListener('click', (ev) => {
+                        if(!pinnedPoint) return;
+                        const inside = ev.target.closest && ev.target.closest('.mannequin');
+                        if(!inside){
+                            if(pinnedPoint) pinnedPoint.classList.remove('pinned');
+                            pinnedPoint = null;
+                            brandLogo.src = originalLogoSrc;
+                            if(tooltip){
+                                tooltip.classList.remove('show');
+                                setTimeout(() => tooltip.src = '', 150);
+                            }
+                        }
+                    });
+                })();
+            </script>
+            <script src="script.js"></script>
+        </body>
 </html>

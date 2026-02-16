@@ -163,34 +163,43 @@ body {
     justify-content: center;
 }
 
+.toggle-switch.disabled {
+    opacity: 0.44;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 .toggle-slider {
     position: absolute;
     top: 2px;
-    left: 450px;
+    left: 2px; /* default: left (front view)
+                slider will move to the right when toggled */
     width: 24px;
     height: 24px;
     background: #FFF;
     border-radius: 50%;
-    transition: 0.3s;
-}
-
-.toggle-f {
-    position: absolute;
-    right: 1px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    background: #FFF;
-    color: #0473DF;
-    border-radius: 50%;
+    transition: left 0.18s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.toggle-f {
+    display: inline-block;
+    color: #0473DF;
     font-weight: 700;
     font-size: 12px;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    line-height: 1;
+    user-select: none;
+}
+
+/* when switch has .on, move slider to right and update colors */
+.toggle-switch.on .toggle-slider {
+    left: 26px;
+}
+.toggle-switch.on .toggle-f {
+    color: #0473DF; /* optional: change color for Back (B) */
 }
 
 .stars {
@@ -320,8 +329,70 @@ body {
 }
 
 .point:hover {
-    background: #9BA1B0;
+    background: #E4AC50;
     transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Tooltip image shown when hovering a measurement point */
+.point-tooltip {
+    position: absolute;
+    width: 140px;
+    height: auto;
+    display: none;
+    pointer-events: none;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    z-index: 40;
+    transform: translate(-50%, -120%);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+    background: #fff;
+}
+
+.point-tooltip.show {
+    display: block;
+    opacity: 1;
+}
+
+/* show/hide front/back points */
+.point[data-side="back"]{
+    display: none;
+}
+
+.mannequin.back-mode .point[data-side="back"]{
+    display: block;
+}
+
+.mannequin.back-mode .point[data-side="front"]{
+    display: none;
+}
+
+/* hide lower points by default */
+.point[data-side="lower"]{
+    display: none;
+}
+
+/* show lower points when Lower mode is active and hide others */
+.mannequin.lower-mode .point[data-side="lower"]{
+    display: block;
+    color: #0D1829;
+    background: #; /* teal */
+    /* border-color: #0e7490; */
+    width: 18px;
+    height: 18px;
+    border-radius: 50px; /* slightly rounded */
+    box-shadow: 0 6px 16px rgba(6,182,212,0.18);
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.mannequin.lower-mode .point[data-side="lower"]:hover{
+    transform: translate(-50%, -50%) scale(1.2);
+    background: #E4AC50;
+}
+
+/* hide front/back when lower-mode active */
+.mannequin.lower-mode .point[data-side="front"],
+.mannequin.lower-mode .point[data-side="back"]{
+    display: none;
 }
 
 .dimension {
@@ -601,4 +672,29 @@ color: #0D1829;
         width: 32px;
         height: 32px;
     }
+}
+
+/* Preview image shown inside the input container when the input is focused */
+.field-with-unit .input-preview {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    display: none;
+    pointer-events: none;
+    z-index: 20;
+    background: #fff;
+}
+
+.field-with-unit.input-preview-visible .input-preview {
+    display: block;
+}
+
+.field-with-unit .input-preview[src=""] {
+    display: none;
 }
